@@ -33,23 +33,19 @@ Certifique-se de ter o seguinte instalado em sua máquina:
    cd generate-curriculum
 
 ## Configure o ambiente virtual para a API backend:
-
-  ```bash
-  cd api
+  `cd api
   python -m venv myenv
-  source myenv/bin/activate  # No Windows, use `myenv\Scripts\activate`
-  pip install -r requirements.txt
+  source myenv/bin/activate  # No Windows, use ``myenv\Scripts\activate``
+  pip install -r requirements.txt`
 
 ## Inicie a API backend:
-  ```bash
-  flask run
+  `flask run`
 
 ## Abra outro terminal e inicie a aplicação frontend:
-```bash
-  cd ..
+  `cd ..`
 # Se necessário, instale um servidor web simples para servir o HTML, como o `http-server`:
-  npm install -g http-server
-  http-server
+  `npm install -g http-server`
+  `http-server`
 
 ## Uso
 

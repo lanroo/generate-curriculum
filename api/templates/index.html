@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Crie seu Currículo</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Crie seu Currículo</h1>
+        <form id="resumeForm" method="post" action="/api/generate-pdf">
+            <div class="form-group">
+                <label for="name">Nome Completo:</label>
+                <input type="text" id="name" name="name" required class="input-effect">
+
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required class="input-effect">
+            </div>
+            <div class="form-group">
+                <label for="phone">Telefone:</label>
+                <input type="text" id="phone" name="phone" required class="input-effect">
+            </div>
+            <div class="form-group">
+                <label for="linkedin">LinkedIn:</label>
+                <input type="text" id="linkedin" name="linkedin" required class="input-effect">
+            </div>
+            <div class="form-group">
+                <label for="github">GitHub:</label>
+                <input type="text" id="github" name="github" required class="input-effect">
+            </div>
+            <div class="form-group">
+                <label for="professional_summary">Resumo Profissional:</label>
+                <textarea id="professional_summary" name="professional_summary" class="input-effect"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="professional_experience">Experiência Profissional:</label>
+                <textarea id="professional_experience" name="professional_experience" class="input-effect"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="education">Formação Acadêmica:</label>
+                <textarea id="education" name="education" class="input-effect"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="certifications">Certificações:</label>
+                <textarea id="certifications" name="certifications" class="input-effect"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="technologies">Tecnologias Utilizadas:</label>
+                <div id="technologies-container" class="technologies-container"></div>
+                <input type="text" id="tagInput" placeholder="Digite uma tag e pressione Enter">
+                <div id="tagsContainer"></div>                
+            </div>
+            
+            
+            
+            <div class="form-group">
+                <label for="methodologies">Metodologias:</label>
+                <textarea id="methodologies" name="methodologies" class="input-effect"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="tools">Ferramentas:</label>
+                <textarea id="tools" name="tools" class="input-effect"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="others">Outros:</label>
+                <textarea id="others" name="others" class="input-effect"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="languages">Idiomas:</label>
+                <textarea id="languages" name="languages" class="input-effect"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="operating_systems">Sistemas Operacionais:</label>
+                <textarea id="operating_systems" name="operating_systems" class="input-effect"></textarea>
+            </div>
+            <button type="submit">Gerar Currículo</button>
+        </form>
+    </div>
+    <style>
+        #tagsContainer {
+            display: flex;
+            flex-wrap: wrap;
+            color: white;
+        }
+        .tag {
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Arial', sans-serif;
+            text-shadow: 0 0 3px black;
+        }
+    </style>
+    
+<script>
+    document.getElementById('tagInput').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter' && this.value.trim() !== '') {
+            event.preventDefault();
+            addTag(this.value.trim());
+            this.value = ''; // Limpa o campo de entrada após adicionar a tag
+        }
+    });
+    
+    function addTag(tagValue) {
+        const tagsContainer = document.getElementById('tagsContainer');
+        const tagElement = document.createElement('div');
+        tagElement.classList.add('tag');
+        tagElement.textContent = tagValue;
+        tagElement.classList.add('tag');
+        tagElement.style.backgroundColor = getRandomColor(); // Aplica cor aleatória
+        tagElement.addEventListener('click', function() {
+            this.remove(); // Remover a tag quando clicada
+        });
+        tagsContainer.appendChild(tagElement);
+    }
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>

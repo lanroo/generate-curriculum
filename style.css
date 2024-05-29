@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 20px;
@@ -12,6 +12,7 @@ body {
     background-color: #fff;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
 }
 
 .form-group {
@@ -36,7 +37,7 @@ textarea {
 
 textarea {
     height: 100px;
-    resize: none; /* Desabilita o redimensionamento manual */
+    resize: none; 
 }
 
 button {
@@ -50,4 +51,38 @@ button {
 
 button:hover {
     background-color: #003580;
+}
+
+.input-effect {
+    transition: transform 0.6s ease;
+}
+
+.input-effect:hover {
+    transform: scale(1.03);
+}
+
+.technologies-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.balloon {
+    display: inline-flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 15px;
+}
+
+.balloon span {
+    margin-right: 5px;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #888;
 }

@@ -1,5 +1,5 @@
-from flask import Flask, request, send_file, render_template
 from fpdf import FPDF
+from flask import Flask, request, send_file
 from io import BytesIO
 
 app = Flask(__name__)
@@ -21,10 +21,6 @@ class PDF(FPDF):
         self.multi_cell(0, 10, body)
         self.ln(5)
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
 @app.route('/api/generate-pdf', methods=['POST'])
 def generate_pdf():
     data = request.form
@@ -38,8 +34,6 @@ def generate_pdf():
         pdf.chapter_title('Email')
         pdf.chapter_body(data.get('email', ''))
 
-        # Adicione mais campos conforme necessário
-
         # Criar arquivo PDF em memória
         pdf_output = BytesIO()
         pdf.output(pdf_output)
@@ -50,4 +44,4 @@ def generate_pdf():
         return str(e), 500
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
